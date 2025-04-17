@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - GLOF Analysis{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row align-items-center">
+        <div class="col-lg-6">
+            <h1 class="display-4 fw-bold mb-4">Glacier Lake Outburst Flood Analysis</h1>
+            <p class="lead mb-4">Advanced monitoring and analysis system for detecting potential glacier lake outburst floods (GLOFs) to enhance safety and preparedness in vulnerable regions.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="{% url 'glaciers:glacier_list' %}" class="btn btn-primary btn-lg px-4 me-md-2">View Glaciers</a>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="h4 mb-3">About GLOF Analysis</h2>
+                    <p>Our system provides comprehensive analysis of glacier lakes to identify potential outburst risks. We combine satellite imagery, historical data, and advanced algorithms to help protect communities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5 pt-5">
+        <div class="col-12 text-center">
+            <h2 class="mb-4">Key Features</h2>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="h5 card-title">Real-time Monitoring</h3>
+                    <p class="card-text">Continuous surveillance of glacier lakes using advanced satellite imagery and sensor data.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="h5 card-title">Risk Assessment</h3>
+                    <p class="card-text">Comprehensive analysis of potential outburst risks using machine learning algorithms.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="h5 card-title">Early Warning</h3>
+                    <p class="card-text">Timely alerts and notifications for potentially hazardous situations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

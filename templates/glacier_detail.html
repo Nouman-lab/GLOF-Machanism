@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ glacier.name }} - GLOF Analysis{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'glaciers:glacier_list' %}">Glaciers</a></li>
+            <li class="breadcrumb-item active">{{ glacier.name }}</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <img src="{{ glacier.image.url }}" class="card-img-top" alt="{{ glacier.name }}">
+                <div class="card-body">
+                    <h1 class="card-title h2">{{ glacier.name }}</h1>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <h5>Volume</h5>
+                            <p>{{ glacier.volume }} km³</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Event Type</h5>
+                            <p>{{ glacier.event_type }}</p>
+                        </div>
+                        <div class="col-12">
+                            <h5>Outburst Mechanism</h5>
+                            <p>{{ glacier.outburst_mechanism }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mt-4">
+                <div class="card-body">
+                    <h2 class="h4">Description</h2>
+                    <p class="card-text">{{ glacier.description }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="h4 mb-4">Area Affected</h2>
+                    <img src="{{ glacier.area_map.url }}" class="img-fluid rounded mb-3" alt="Area Map">
+                    <p class="text-muted">{{ glacier.area_description }}</p>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mt-4">
+                <div class="card-body">
+                    <h2 class="h4 mb-3">Risk Assessment</h2>
+                    <div class="progress mb-3" style="height: 30px;">
+                        <div class="progress-bar bg-{{ glacier.risk_level_color }} d-flex align-items-center justify-content-center" 
+                             role="progressbar" 
+                             style="width: 100%;"
+                             aria-valuenow="{{ glacier.risk_percentage }}"
+                             aria-valuemin="0"
+                             aria-valuemax="100">
+                            <span class="text-white fw-bold">{{ glacier.risk_level|title }}</span>
+                        </div>
+                    </div>
+                    <p class="text-muted">{{ glacier.risk_description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const progressBars = document.querySelectorAll('.progress-bar[data-width]');
+    progressBars.forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+    });
+});
+</script>
+{% endblock %} 

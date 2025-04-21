@@ -11,7 +11,9 @@ SECRET_KEY = 'django-insecure-your-secret-key-here'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://glof-machanism.onrender.com'
+]
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
